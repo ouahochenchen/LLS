@@ -26,3 +26,5 @@
 六、apps:应用入口层（路由层，接收请求）
 
 七、protocol:协议包层，用于定义协议
+
+protoc --go_out=. --go-grpc_out=. ./protocol/grpc/example.proto
