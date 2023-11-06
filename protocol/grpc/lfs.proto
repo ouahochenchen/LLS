@@ -5,7 +5,7 @@ package lfs;
 option go_package = "./go";
 
 service LfsService {
-  rpc LfsRpc(LfsRequest) returns (LfsResponse) {}
+  rpc CreateLineOrder(LfsRequest) returns (LfsResponse) {}
 }
 message LfsRequest {
   uint64 lfsOrderId = 1;
