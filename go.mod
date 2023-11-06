@@ -1,4 +1,4 @@
-module LLS
+module github.com/ouahochenchen/LLS
 
 go 1.21
 
