@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "./go";
+
+service SiteService {
+  rpc isExistResource(ExistSiteLineRequest) returns (ExistSiteLineResponse) {}
+}
+message ExistSiteLineRequest{
+  uint64 resourceId=1;
+  uint64 nextId=2;
+  uint64  resourceType=3;
+  uint64 nextType=4;
+}
+
+message ExistSiteLineResponse{
+  bool isExist=1;
+}
