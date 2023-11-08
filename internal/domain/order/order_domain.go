@@ -14,6 +14,11 @@ type orderDomainImpl struct {
 	orderRepo order_repo.OrderRepo
 }
 
+func NewOderDomain(orderRepo order_repo.OrderRepo) OrderDomain {
+	return &orderDomainImpl{
+		orderRepo: orderRepo,
+	}
+}
 func (o *orderDomainImpl) PlacingOrder(request *_go.LfsRequest) (*_go.LfsResponse, error) {
 	result, err := o.orderRepo.SelectByLaneOrderId(request.LfsOrderId)
 	if err != nil {
