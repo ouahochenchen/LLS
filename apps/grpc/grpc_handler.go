@@ -26,5 +26,5 @@ func ResourceGrpcHandler(protocol string, port string) {
 	if err := GrpcServer.Serve(lis); err != nil {
 		log.Fatalf("无法启动服务：%v", err)
 	}
-
+	log.Println("成功启动 gRPC 服务")
 }
