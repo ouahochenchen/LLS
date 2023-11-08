@@ -28,7 +28,7 @@ func (e *resourceDomainImpl) IsExistResource(request *_go.ExistSiteLineRequest) 
 		if err != nil {
 			return nil, err
 		}
-		if res1 == nil {
+		if res1.SiteId == 0 {
 			isExist = false
 		}
 	}
@@ -37,7 +37,7 @@ func (e *resourceDomainImpl) IsExistResource(request *_go.ExistSiteLineRequest) 
 		if err != nil {
 			return nil, err
 		}
-		if res2 == nil {
+		if res2.LineId == 0 {
 			isExist = false
 		}
 	}
@@ -46,7 +46,7 @@ func (e *resourceDomainImpl) IsExistResource(request *_go.ExistSiteLineRequest) 
 		if err != nil {
 			return nil, err
 		}
-		if res3 == nil {
+		if res3.SiteId == 0 {
 			isExist = false
 		}
 	}
@@ -55,9 +55,12 @@ func (e *resourceDomainImpl) IsExistResource(request *_go.ExistSiteLineRequest) 
 		if err != nil {
 			return nil, err
 		}
-		if res4 == nil {
+		if res4.LineId == 0 {
 			isExist = false
 		}
+	}
+	if (request.NextType != 1 && request.NextType != 2) || (request.ResourceType != 1 && request.ResourceType != 2) {
+		isExist = false
 	}
 	return &_go.ExistSiteLineResponse{
 		IsExist: isExist,

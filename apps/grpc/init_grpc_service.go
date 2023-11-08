@@ -1,4 +1,4 @@
-package api
+package grpc
 
 import (
 	"github.com/ouahochenchen/LLS/internal/dal/repository/line_repo"
