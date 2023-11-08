@@ -4,7 +4,9 @@ import (
 	"github.com/ouahochenchen/LLS/internal/dal/repository/order_repo"
 	"github.com/ouahochenchen/LLS/internal/util"
 	_go "github.com/ouahochenchen/LLS/protocol/grpc/go"
+	"math/rand"
 	"strconv"
+	"time"
 )
 
 type OrderDomain interface {
@@ -35,8 +37,10 @@ func (o *orderDomainImpl) PlacingOrder(request *_go.LfsRequest) (*_go.LfsRespons
 	if !isDeliverFunc() {
 		return nil, &util.MyError{MyErrorMessage: "链路不可达"}
 	}
-	worker := util.NewIdWorker(int64(request.LfsOrderId))
-	orderId := worker.NextId()
+	//worker := util.NewIdWorker(int64(request.))
+	//orderId := worker.NextId()
+	rand.Seed(time.Now().UnixNano() + int64(request.LfsOrderId))
+	orderId := rand.Intn(1000000)
 	createOrderId, err := o.orderRepo.Create(
 		&order_repo.LineOrderTab{
 			OrderId:       uint64(orderId),

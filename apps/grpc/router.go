@@ -1,6 +1,8 @@
 package grpc
 
-func InitRouter() {
-	ResourceGrpcHandler("tcp", "50051")
+func InitOrderRouter() {
 	OrderGrpcHandler("tcp", "50052")
+}
+func InitResourceRouter() {
+	ResourceGrpcHandler("tcp", "50051")
 }

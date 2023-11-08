@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/ouahochenchen/LLS/internal/domain/order"
 	_go "github.com/ouahochenchen/LLS/protocol/grpc/go"
-	"google.golang.org/grpc"
 )
 
 type OrderUseCase struct {
@@ -17,7 +16,7 @@ func NewOrderUseCase(domain order.OrderDomain) *OrderUseCase {
 		domain: domain,
 	}
 }
-func (o *OrderUseCase) CreateLineOrder(ctx context.Context, req *_go.LfsRequest, opts ...grpc.CallOption) (*_go.LfsResponse, error) {
+func (o *OrderUseCase) LfsRpc(ctx context.Context, req *_go.LfsRequest) (*_go.LfsResponse, error) {
 	resp, err := o.domain.PlacingOrder(req)
 	if err != nil {
 		return nil, err
